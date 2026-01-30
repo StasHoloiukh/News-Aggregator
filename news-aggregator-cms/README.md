@@ -33,10 +33,8 @@ Build & deploy
 ```bash
 npm run build
 npm run deploy
-npm run deploy-graphql
 # build: sanity build
 # deploy: sanity deploy
-# deploy-graphql: sanity graphql deploy
 ```
 
 ## Project structure
@@ -54,10 +52,6 @@ npm run deploy-graphql
 1. Add a new file to `schemaTypes/` and follow the existing pattern.
 2. Export the new type from `schemaTypes/index.ts`.
 3. Restart the Studio (`npm run dev`) to load your changes.
-
-## GraphQL
-
-Run `npm run deploy-graphql` to publish the GraphQL API for the active dataset.
 
 ## Contributing
 
