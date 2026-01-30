@@ -1,9 +1,5 @@
 import {createClient} from '@sanity/client'
 
-/**
- * Sanity client for frontend consumption
- * Used to fetch CMS configuration (sources, topics) dynamically
- */
 export const sanityClient = createClient({
   projectId: 'frbzm2pc',
   dataset: 'production',
@@ -11,11 +7,7 @@ export const sanityClient = createClient({
   apiVersion: '2024-01-01',
 })
 
-/**
- * GROQ query to fetch all active news sources
- * Returns: {sourceId, name}
- * Used to filter which sources are allowed in the application
- */
+
 export const SOURCES_QUERY = `
   *[_type == "newsSource" && isActive == true] {
     _id,
@@ -24,11 +16,6 @@ export const SOURCES_QUERY = `
   }
 `
 
-/**
- * GROQ query to fetch all topic definitions with keywords
- * Returns: {name, keywords, color}
- * Used to classify articles by matching title against keywords
- */
 export const TOPICS_QUERY = `
   *[_type == "topic"] {
     _id,
@@ -38,9 +25,6 @@ export const TOPICS_QUERY = `
   }
 `
 
-/**
- * Fetch all active news sources from CMS
- */
 export async function fetchNewsSources() {
   try {
     return await sanityClient.fetch(SOURCES_QUERY)
@@ -50,9 +34,6 @@ export async function fetchNewsSources() {
   }
 }
 
-/**
- * Fetch all topic definitions from CMS
- */
 export async function fetchTopics() {
   try {
     return await sanityClient.fetch(TOPICS_QUERY)
@@ -62,10 +43,6 @@ export async function fetchTopics() {
   }
 }
 
-/**
- * Fetch both sources and topics in parallel
- * Returns: {sources, topics}
- */
 export async function fetchCMSConfig() {
   try {
     const [sources, topics] = await Promise.all([
