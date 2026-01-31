@@ -4,7 +4,7 @@ import type {NewsSource, Topic, CMSConfig} from '../types'
 const client = createClient({
   projectId: (import.meta.env.VITE_SANITY_PROJECT_ID as string) || 'frbzm2pc',
   dataset: (import.meta.env.VITE_SANITY_DATASET as string) || 'production',
-  useCdn: true,
+  useCdn: false,
   apiVersion: (import.meta.env.VITE_SANITY_API_VERSION as string) || '2024-01-01',
 })
 

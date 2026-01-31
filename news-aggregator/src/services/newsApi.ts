@@ -20,10 +20,19 @@ export async function fetchTopHeadlines(options?: {
   pageSize?: number
   page?: number
 }): Promise<NewsApiResponse> {
-  const params: Record<string, any> = {}
-  if (options?.country) params.country = options.country
+  // If sources are specified, use /everything instead (top-headlines doesn't support sources + country)
+  if (options?.sources) {
+    return fetchEverything({
+      sources: options.sources,
+      q: options.q,
+      pageSize: options.pageSize,
+      page: options.page,
+      sortBy: 'publishedAt',
+    })
+  }
+
+  const params: Record<string, any> = {country: options?.country || 'us'}
   if (options?.category) params.category = options.category
-  if (options?.sources) params.sources = options.sources
   if (options?.q) params.q = options.q
   if (options?.pageSize) params.pageSize = options.pageSize
   if (options?.page) params.page = options.page

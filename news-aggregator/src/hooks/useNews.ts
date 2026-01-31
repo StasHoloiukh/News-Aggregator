@@ -19,10 +19,10 @@ export function useNews(options: UseNewsOptions = {}) {
   const {data: config} = useNewsConfig()
 
   return useQuery<EnrichedArticle[]>({
-    queryKey: ['news', options],
+    queryKey: ['news', options.q, options.sources, options.country, options.pageSize, options.page],
     queryFn: async () => {
       // Prefer fetchEverything for search, otherwise top headlines
-      const response: NewsApiResponse = options.q
+      const response: NewsApiResponse = options.q || options.sources
         ? await fetchEverything(options)
         : await fetchTopHeadlines(options)
 
@@ -31,7 +31,7 @@ export function useNews(options: UseNewsOptions = {}) {
       }
 
       // Filter and classify using CMS config
-      return config ? filterAndClassifyArticles(response.articles, config) : response.articles as any[]
+      return config ? filterAndClassifyArticles(response.articles, config) : (response.articles as any[])
     },
     staleTime: 2 * 60 * 1000, // 2 minutes
     retry: 1,
