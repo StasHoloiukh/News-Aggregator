@@ -12,7 +12,7 @@ export function Feed() {
   const {data: config, isLoading: configLoading} = useNewsConfig()
   const {data: articles = [], isLoading: articlesLoading, error} = useNews({
     q: searchQuery || undefined,
-    sources: selectedSource || undefined,
+    sources: selectedSource || config?.sources.map(s => s.sourceId).join(',') || undefined,
     pageSize: 20,
   })
 
