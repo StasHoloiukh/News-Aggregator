@@ -47,14 +47,3 @@ npm run deploy
 	- `topic.ts` — topic schema
 - `static/` — static assets used by the Studio
 
-## Editing / Extending the schema
-
-1. Add a new file to `schemaTypes/` and follow the existing pattern.
-2. Export the new type from `schemaTypes/index.ts`.
-3. Restart the Studio (`npm run dev`) to load your changes.
-
-## Contributing
-
-- Follow the TypeScript and ESLint rules in this repo.
-- Run `npm run dev` locally to test schema changes.
-
