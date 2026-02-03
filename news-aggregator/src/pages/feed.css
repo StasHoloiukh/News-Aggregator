@@ -274,3 +274,60 @@
 img {
   @apply select-none;
 }
+
+/* ======================
+   Pagination
+====================== */
+
+.pagination {
+  @apply flex items-center justify-center
+         gap-6
+         mt-12 pb-12;
+}
+
+.pagination-btn {
+  @apply inline-flex items-center
+         gap-2
+         px-6 py-3
+         rounded-full
+         bg-white
+         border border-gray-300
+         text-gray-700
+         font-medium
+         shadow-sm
+         hover:bg-gray-100
+         hover:shadow-md
+         transition
+         disabled:opacity-40
+         disabled:cursor-not-allowed;
+}
+
+.pagination-btn-primary {
+  @apply bg-gradient-to-r
+         from-blue-500
+         to-indigo-600
+         text-white
+         border-none
+         hover:shadow-lg;
+}
+
+.pagination-page {
+  @apply flex items-center
+         gap-2
+         px-5 py-3
+         rounded-full
+         bg-gray-100
+         text-gray-600
+         text-sm
+         font-medium;
+}
+
+.page-number {
+  @apply inline-flex items-center justify-center
+         w-8 h-8
+         rounded-full
+         bg-white
+         text-gray-900
+         font-semibold
+         shadow;
+}

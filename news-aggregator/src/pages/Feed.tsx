@@ -180,29 +180,34 @@ export function Feed() {
 
             {/* Pagination Controls */}
             {!isLoading && !error && articles.length > 0 && (
-              <div className="flex justify-center items-center gap-4 mt-8 pb-8">
-                <button
-                  className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                  disabled={page === 1}
-                  onClick={() => {
-                    setPage(p => Math.max(1, p - 1))
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                  }}
-                >
-                  Previous
-                </button>
-                <span className="text-sm font-medium">Page {page}</span>
-                <button
-                  className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                  disabled={articles.length < 20} // Disable if we got less than requested (end of list)
-                  onClick={() => {
-                    setPage(p => p + 1)
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                  }}
-                >
-                  Next
-                </button>
-              </div>
+              <div className="pagination">
+                  <button
+                        className="pagination-btn"
+                        disabled={page === 1}
+                        onClick={() => {
+                          setPage(p => Math.max(1, p - 1))
+                          window.scrollTo({ top: 0, behavior: 'smooth' })
+                        }}
+                      >
+                        ← Previous
+                      </button>
+
+                      <div className="pagination-page">
+                        <span>Page</span>
+                        <span className="page-number">{page}</span>
+                      </div>
+
+                      <button
+                        className="pagination-btn pagination-btn-primary"
+                        disabled={articles.length < 20}
+                        onClick={() => {
+                          setPage(p => p + 1)
+                          window.scrollTo({ top: 0, behavior: 'smooth' })
+                        }}
+                      >
+                        Next →
+                      </button>
+                    </div>
             )}
           </>
         )}
