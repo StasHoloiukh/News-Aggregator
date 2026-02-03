@@ -1,0 +1,276 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ======================
+   Layout
+====================== */
+
+.feed {
+  @apply min-h-screen bg-gray-50;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* ======================
+   Header
+====================== */
+
+.feed-header {
+  @apply bg-white shadow-sm sticky top-0 z-20;
+}
+
+.feed-header .container {
+  @apply py-6;
+}
+
+.feed-title {
+  @apply text-3xl font-bold text-gray-900;
+}
+
+.feed-subtitle {
+  @apply text-gray-600 mt-2;
+}
+
+/* ======================
+   Filters
+====================== */
+
+.feed-filters {
+  @apply bg-white border-b sticky top-20 z-10;
+}
+
+.filters-grid {
+  @apply grid grid-cols-1 md:grid-cols-2
+         gap-4 md:gap-6
+         py-6;
+}
+
+.input {
+  @apply w-full px-4 py-3
+         border border-gray-300 rounded-xl
+         bg-white text-gray-900
+         focus:outline-none focus:ring-2 focus:ring-blue-500
+         transition;
+}
+
+/* ======================
+   Main
+====================== */
+
+.feed-main {
+  @apply py-12 md:py-16;
+}
+
+/* ======================
+   Article List (Wrapper)
+====================== */
+
+.article-list {
+  @apply bg-white
+         border border-gray-200
+         rounded-3xl
+         shadow-sm
+         p-6 md:p-8;
+}
+
+.article-list-grid {
+  @apply grid grid-cols-1
+         md:grid-cols-2
+         xl:grid-cols-3
+         gap-6 md:gap-8;
+}
+
+/* ======================
+   Article Card
+====================== */
+
+.article-card {
+  @apply relative
+         bg-white
+         rounded-2xl
+         border border-gray-200
+         overflow-hidden
+         shadow-sm
+         transition-all duration-300
+         hover:shadow-2xl
+         hover:-translate-y-1;
+}
+
+.article-card::after {
+  content: '';
+  @apply absolute inset-0
+         rounded-2xl
+         ring-1 ring-inset ring-gray-200;
+}
+
+.article-card img {
+  @apply w-full h-52
+         object-cover
+         bg-gray-100;
+}
+
+.article-card-body {
+  @apply p-6
+         flex flex-col
+         gap-3;
+}
+
+.article-card-tags {
+  @apply flex flex-wrap gap-2;
+}
+
+.article-card-title {
+  @apply text-lg font-semibold
+         text-gray-900
+         leading-snug
+         transition-colors;
+}
+
+.article-card-description {
+  @apply text-gray-600
+         text-sm
+         leading-relaxed
+         line-clamp-3;
+}
+
+.article-card:hover .article-card-title {
+  @apply text-blue-600;
+}
+
+/* ======================
+   Single Article
+====================== */
+
+.article {
+  @apply bg-white
+         rounded-3xl
+         shadow-xl
+         border border-gray-200
+         overflow-hidden;
+}
+
+.back-button {
+  @apply m-6 md:m-8
+         px-5 py-2
+         rounded-full
+         bg-white
+         border border-gray-300
+         text-gray-700
+         font-medium
+         hover:bg-gray-100
+         hover:shadow
+         transition;
+}
+
+/* ======================
+   Article Image
+====================== */
+
+.article-image {
+  @apply flex items-center justify-center
+         bg-gray-100
+         px-6 py-10;
+}
+
+.article-image img {
+  @apply max-h-[420px]
+         w-auto
+         object-contain
+         rounded-xl
+         shadow-md;
+}
+
+/* ======================
+   Article Body
+====================== */
+
+.article-body {
+  @apply px-6 py-10
+         md:px-12 md:py-14;
+}
+
+.article-tags {
+  @apply flex flex-wrap gap-2 mb-6;
+}
+
+.tag {
+  @apply inline-flex items-center
+         bg-gray-100
+         text-gray-700
+         text-xs
+         uppercase
+         tracking-wide
+         px-3 py-1
+         rounded-full;
+}
+
+.tag-primary {
+  @apply bg-gradient-to-r
+         from-blue-500
+         to-indigo-500
+         text-white;
+}
+
+.article-title {
+  @apply text-3xl md:text-4xl
+         font-bold
+         text-gray-900
+         mb-6;
+}
+
+.article-meta {
+  @apply flex flex-wrap items-center
+         gap-6
+         text-sm
+         text-gray-500
+         mb-8
+         pb-6
+         border-b;
+}
+
+.article-description {
+  @apply text-lg md:text-xl
+         leading-relaxed
+         text-gray-700
+         mb-8;
+}
+
+.prose {
+  @apply space-y-6;
+}
+
+.prose p {
+  @apply text-lg
+         leading-8
+         text-gray-800;
+}
+
+/* ======================
+   Actions
+====================== */
+
+.read-more {
+  @apply inline-flex items-center
+         gap-2
+         mt-10
+         bg-gradient-to-r
+         from-blue-500
+         to-indigo-600
+         text-white
+         px-8 py-3
+         rounded-full
+         font-medium
+         hover:shadow-lg
+         transition;
+}
+
+/* ======================
+   Utilities
+====================== */
+
+img {
+  @apply select-none;
+}
