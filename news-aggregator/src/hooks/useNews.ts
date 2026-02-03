@@ -19,7 +19,8 @@ export function useNews(options: UseNewsOptions = {}) {
   const {data: config} = useNewsConfig()
 
   return useQuery<EnrichedArticle[]>({
-    queryKey: ['news', options.q, options.sources, options.country, options.pageSize, options.page],
+    // ВАЖЛИВО: options.sortBy додано до queryKey, щоб запит оновлювався при зміні сортування
+    queryKey: ['news', options.q, options.sources, options.country, options.pageSize, options.page, options.sortBy],
     queryFn: async () => {
       // Prefer fetchEverything for search, otherwise top headlines
       const response: NewsApiResponse = options.q || options.sources

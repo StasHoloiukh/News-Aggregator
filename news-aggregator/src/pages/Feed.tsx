@@ -10,6 +10,7 @@ export function Feed() {
   const [selectedArticle, setSelectedArticle] = useState<EnrichedArticle | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedSource, setSelectedSource] = useState('')
+  const [sortBy, setSortBy] = useState<'relevancy' | 'popularity' | 'publishedAt'>('publishedAt')
 
   const { data: config, isLoading: configLoading } = useNewsConfig()
   const { data: articles = [], isLoading: articlesLoading, error } = useNews({
@@ -19,6 +20,7 @@ export function Feed() {
       config?.sources.map(s => s.sourceId).join(',') ||
       undefined,
     pageSize: 20,
+    sortBy,
   })
 
   const isLoading = configLoading || articlesLoading
@@ -57,6 +59,16 @@ export function Feed() {
                 {source.name}
               </option>
             ))}
+          </select>
+
+          <select
+            className="input"
+            value={sortBy}
+            onChange={e => setSortBy(e.target.value as 'relevancy' | 'popularity' | 'publishedAt')}
+          >
+            <option value="publishedAt">Newest</option>
+            <option value="relevancy">Relevance</option>
+            <option value="popularity">Popularity</option>
           </select>
         </div>
       </div>
